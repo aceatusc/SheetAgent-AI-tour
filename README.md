@@ -17,8 +17,7 @@ Follow these steps to run SheetAgent:
 ```sh
 python main.py --workbook_path "example_sheets/BoomerangSales.xlsx" \
 --instruction "Count the number of each Product and put the results in a new sheet" \
---output_dir "./output" \ 
---few_shot_planner --verbose
+--output_dir "./output" --few_shot_planner --verbose
 ```
 3. The processed workbook (named `workbook_new`) will be saved in the `output_dir` directory
 
