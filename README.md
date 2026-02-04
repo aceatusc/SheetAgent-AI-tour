@@ -12,7 +12,7 @@ SheetAgent is an innovative autonomous agent that achieves advanced spreadsheet 
 
 Follow these steps to run SheetAgent:
 
-1. Configure your API key and base URL in `openai.yaml`
+1. Configure your API key and base URL in `openai.yaml`/`mistralai.yaml`
 2. Set the `workbook_path` and `instruction` parameters, then run the following command:
 ```sh
 python main.py --workbook_path "example_sheets/BoomerangSales.xlsx" \
