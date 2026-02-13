@@ -183,6 +183,10 @@ def get_model_token_limit(model: MODEL_TYPE) -> Optional[int]:
         return 16385
     if model == MODEL_TYPE.GPT_4_1106:
         return 128000
+    if model == MODEL_TYPE.MISTRAL_SMALL:
+        return 128000
+    if model == MODEL_TYPE.MISTRAL_LARGE:
+        return 256000
     if model.value.startswith("claude-3"):
         return 200000
     return None

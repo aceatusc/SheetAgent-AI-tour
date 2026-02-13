@@ -1,7 +1,8 @@
 from typing import List, Optional
 
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores.milvus import Milvus
+from langchain_openai import OpenAIEmbeddings
+from langchain_milvus import Milvus
+from langchain_mistralai import MistralAIEmbeddings
 
 
 class MilvusStore:

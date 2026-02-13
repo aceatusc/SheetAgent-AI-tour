@@ -21,6 +21,8 @@ class MODEL_TYPE(Enum):
     CLAUDE_OPUS = "claude-3-opus-20240229"
     CLAUDE_SONNET = "claude-3-sonnet-20240229"
     CLAUDE_HAIKU = "claude-3-haiku-20240307"
+    MISTRAL_SMALL = "mistral-small-2506"
+    MISTRAL_LARGE = "mistral-large-2512"
 
     def __str__(self) -> str:
         return self.value

@@ -54,7 +54,7 @@ if __name__ == "__main__":
         choices=list(MODEL_TYPE),
         default=MODEL_TYPE.GPT_4_1106,
     )
-    parser.add_argument("--api_config", type=str, default="./config/openai.yaml")
+    parser.add_argument("--api_config", type=str, default="./config/mistralai.yaml")
     parser.add_argument("--milvus_config", type=str, default="./config/milvus.yaml")
     args = parser.parse_args()
     main(args)

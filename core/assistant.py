@@ -4,6 +4,7 @@ import time
 from typing import Optional
 
 import openai
+import mistralai
 
 from prompt.informer import load_few_shot as load_informer_few_shot
 from prompt.planner import load_few_shot as load_agent_few_shot
@@ -20,7 +21,12 @@ class Assistant(abc.ABC):
         self.few_shot = few_shot
         self.msg_history = []
 
-        self.client = openai.OpenAI(api_key=api_config["api_key"], base_url=api_config["api_base"], timeout=60)
+        if model_type in [MODEL_TYPE.MISTRAL_LARGE, MODEL_TYPE.MISTRAL_SMALL]: # mistral models
+            self.client = mistralai.Mistral(api_key=api_config["api_key"], timeout_ms=60_000)
+            self.completion_func = self.client.chat.complete
+        else:
+            self.client = openai.OpenAI(api_key=api_config["api_key"], base_url=api_config["api_base"], timeout=60)
+            self.completion_func = self.client.chat.completions.create
 
     @abc.abstractmethod
     def construct_few_shot_query(self, query: list):
@@ -43,7 +49,7 @@ class Assistant(abc.ABC):
 
         while True:
             try:
-                response = self.client.chat.completions.create(
+                response = self.completion_func(
                     model=self.model_type.value,
                     messages=query,  # type: ignore
                     # temperature=0.2,

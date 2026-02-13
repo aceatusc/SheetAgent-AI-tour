@@ -1,0 +1,2 @@
+api_base: https://api.mistral.ai/v1 # ignored
+api_key: x

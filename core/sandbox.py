@@ -20,14 +20,18 @@ class Sandbox:
             "import openpyxl\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport os\nimport datetime\n"
         )
 
-        self.step(code_import, dummy=False)
+        response = self.step(code_import, dummy=False)
+        if response.code == EXEC_CODE.FAIL:
+            raise RuntimeError(f"Failed to import required libraries: {response.msg}")
 
     def load_workbook(self, workbook_path):
 
         code_init = [f'wb_path = r"{workbook_path}"']
         code_init += [f"workbook = openpyxl.load_workbook(wb_path)"]
 
-        self.step("\n".join(code_init), dummy=False)
+        response = self.step("\n".join(code_init), dummy=False)
+        if response.code == EXEC_CODE.FAIL:
+            raise RuntimeError(f"Failed to load workbook from {workbook_path}: {response.msg}")
 
     def load_worksheets(self, sheet_vars):
         sheet_names = self.get_existing_sheet_names()
@@ -40,7 +44,10 @@ class Sandbox:
 
     def get_existing_sheet_names(self):
         code_snippet = "print(workbook.sheetnames)"
-        sheet_names = self.step(code_snippet, dummy=True).msg.splitlines()[-1]
+        response = self.step(code_snippet, dummy=True)
+        if response.code == EXEC_CODE.FAIL:
+            raise RuntimeError(f"Failed to get sheet names: {response.msg}")
+        sheet_names = response.msg.splitlines()[-1]
         sheet_names = eval(sheet_names)
         return sheet_names
 
