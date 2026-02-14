@@ -21,6 +21,8 @@ python main.py --workbook_path "example_sheets/BoomerangSales.xlsx" \
 ```
 3. The processed workbook (named `workbook_new`) will be saved in the `output_dir` directory
 
+**UI Interface (optional):** A web UI with spreadsheet viewer and Copilot-style chat is available. See [sheet-agent-ui/README.md](sheet-agent-ui/README.md) for setup and run instructions.
+
 For more parameter settings, please refer to `main.py`.
 
 We have provided several example spreadsheets in the `example_sheets` directory. You can try different task instructions as needed.
