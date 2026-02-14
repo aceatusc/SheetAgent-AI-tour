@@ -216,3 +216,8 @@ __marimo__/
 .streamlit/secrets.toml
 *.db
 output*/
+
+# SheetAgent UI
+sheet-agent-ui/node_modules/
+sheet-agent-ui/dist/
+api/temp/
