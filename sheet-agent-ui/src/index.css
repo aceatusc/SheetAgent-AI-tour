@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface text-gray-100 antialiased;
+  }
+}
+
+/* Handsontable dark theme – high contrast text */
+.handsontable .htCore td,
+.handsontable .htCore th {
+  color: #f3f4f6 !important; /* gray-100 */
+  border-color: #4b5563;
+  background-color: #2d2d2d;
+}
+.handsontable .htCore th {
+  background-color: #171717;
+  font-weight: 600;
+}
+.handsontable .htCore .rowHeader,
+.handsontable .htCore .colHeader {
+  color: #e5e7eb !important; /* gray-200 */
+  background-color: #262626;
+}
+.handsontable {
+  --htBorderColor: #4b5563;
+}
+.handsontable input.htInput {
+  color: #f3f4f6 !important;
+  background-color: #1f2937;
+}
