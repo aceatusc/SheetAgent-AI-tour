@@ -52,7 +52,7 @@ if __name__ == "__main__":
         "--model_type",
         type=MODEL_TYPE,
         choices=list(MODEL_TYPE),
-        default=MODEL_TYPE.MISTRAL_SMALL,
+        default=MODEL_TYPE.GPT_4_1106,
     )
     parser.add_argument("--api_config", type=str, default="./config/mistralai.yaml")
     parser.add_argument("--milvus_config", type=str, default="./config/milvus.yaml")
